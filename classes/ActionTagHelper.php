@@ -55,6 +55,11 @@ class ActionTagHelper
             $field_annotation = $field['field_annotation'];
             $parsed_tags = self::parseActionTags($field_annotation);
             // \Plugin::log($tags, "DEBUG", "TAGS for $field_name");
+
+            if (!is_array($parsed_tags)) {
+                $parsed_tags = [];
+            }
+            
             foreach ($parsed_tags as $tag) {
                 // All action-tags should be parsed as uppercase
                 $action_tag = strtoupper($tag['actiontag']);
